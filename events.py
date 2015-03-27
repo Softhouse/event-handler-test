@@ -5,8 +5,8 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 import requests, json
 
 app = Flask(__name__)
-db_url = 'http://xyz.softhouse.se/api/event'
-#db_url = 'http://localhost:3232/event/'
+#db_url = 'http://xyz.softhouse.se/api/event'
+db_url = 'http://localhost:3232/event/'
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
