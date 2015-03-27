@@ -5,7 +5,8 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 import requests, json
 
 app = Flask(__name__)
-db_url = 'http://localhost:3232/event/'
+db_url = 'http://xyz.softhouse.se/api/event'
+#db_url = 'http://localhost:3232/event/'
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
@@ -35,7 +36,8 @@ def register():
         }
         requests.post(db_url, data=data, headers={'content-type': 'application/json'})
     else:
-        pass
+	get_resp = requests.get(db_url, headers={'content-type': 'application/json'})
+	return json.dumps(get_resp.json())
     return redirect(url_for('start'))
 
 @app.route('/event', methods=['POST', 'GET'])
