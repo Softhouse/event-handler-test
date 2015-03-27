@@ -59,7 +59,7 @@ def event():
             msg = "Something went wrong"
     else:
         pass
-    return render_template('event_admin.html', message=msg)
+    return redirect(url_for(start))
 
 
 if __name__ == '__main__':
