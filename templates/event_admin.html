@@ -7,11 +7,14 @@ Event Admin Page
 <H1>
 Current Events
 </H1>
-<!-- Add code to list current events //-->
+{% for event in events %}
+    {{ event.event_name }}   
+    {{ event.event_date_text }}
+{% endfor %} 
 <H1>
 Event Managent
 </H1>
-<FORM>
+<FORM action="{{ url_for('event') }}" method="post"> 
 Name of event: <INPUT type="text" name="event_name"><P>
 Date of event: <INPUT type="text" name="event_date_text"><P>
 
