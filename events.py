@@ -30,7 +30,7 @@ def show_event():
     return render_template('event_register.html', event=event.json())
 
 @app.route('/show_participants')
-def show_event():
+def show_participants():
     events = requests.get(db_url)
     return render_template('event_particpants.html')
 
