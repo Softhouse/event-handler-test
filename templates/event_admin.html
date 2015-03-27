@@ -9,7 +9,7 @@ Event Admin Page
 Current Events
 </H1>
 {% for event in events %}
-  <a href="{{ url_for('show_event', event) }}">Register to {{ event.event_name }}</a>
+  <a href="{{ url_for('show_event') }}?{{event.event_name}}">Register to {{ event.event_name }}</a>
   , date: {{ event.event_date_text }}
   <P>
 {% endfor %} 
