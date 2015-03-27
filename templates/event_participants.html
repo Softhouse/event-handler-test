@@ -2,9 +2,14 @@
 <HEAD>
 </HEAD>
 <H1>
-Participants
+Event {{event.event_name}}
 </H1>
-<H1>
-Event x
-</H1>
+<H2>
+Participants<br>
+{% for participant in participants %}
+	{{ participant.first_name }}
+	{{ participant.family_name }}
+	<br>
+{% endfor %}
+</H2>
 </HTML>

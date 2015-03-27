@@ -11,8 +11,7 @@ Current Events
 {% for event in events %}
   <div style="width: 400px">
   <div style="float:left; width: 200px">
-  <a href="{{ url_for('show_event') }}?event={{event._id}}">Register to {{ event.event_name }}</a>
-  , date: {{ event.event_date_text }}
+  <a href="{{ url_for('show_event') }}?event={{event._id}}">Register to {{ event.event_name }}</a> , date: {{ event.event_date }}
   </div>
   <div style="float:right; width: 200px">
   <a href="{{ url_for('show_participants') }}?event={{event._id}}">Show participants for {{ event.event_name }}</a>

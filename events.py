@@ -6,8 +6,8 @@ import requests, json
 
 app = Flask(__name__)
 
-db_url = 'http://xyz.softhouse.se/api/event'
-#db_url = 'http://localhost:3232/event'
+#db_url = 'http://xyz.softhouse.se/api/event'
+db_url = 'http://localhost:3232/event'
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
@@ -31,8 +31,10 @@ def show_event():
 
 @app.route('/show_participants')
 def show_participants():
-    events = requests.get(db_url)
-    return render_template('event_particpants.html')
+    event_name = request.args.get('event')
+    participants = requests.get(db_url + '/?event_id=' + event_name)
+    event = requests.get(db_url + '/' + event_name)
+    return render_template('event_participants.html', event=event.json(), participants=participants.json())
 
 
 @app.route('/register', methods=['POST', 'GET'])
