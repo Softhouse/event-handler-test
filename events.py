@@ -28,6 +28,12 @@ def show_event():
     events = requests.get(db_url)
     return render_template('event_register.html')
 
+@app.route('/show_participants')
+def show_event():
+    events = requests.get(db_url)
+    return render_template('event_particpants.html')
+
+
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
