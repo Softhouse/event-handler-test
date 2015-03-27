@@ -8,9 +8,11 @@ Event Admin Page
 Current Events
 </H1>
 {% for event in events %}
-    {{ event.event_name }}   
-    {{ event.event_date_text }}
+  <a href="event_register.html">Register to {{ event.event_name }}</a>
+  , date: {{ event.event_date_text }}
+  <P>
 {% endfor %} 
+
 <H1>
 Event Managent
 </H1>
