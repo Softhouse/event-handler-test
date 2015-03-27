@@ -49,10 +49,14 @@ def event():
             'event_name': request.form['event_name'],
             'event_date': request.form['event_date_text'],
         }
-        requests.post(db_url, data=data, headers={'content-type': 'application/json'})
+        result = requests.post(db_url, data=json.dumps(data), headers={'content-type': 'application/json'})
+        if result.status_code is requests.codes.ok:
+            msg = "Event added"
+        else:
+            msg = "Something went wrong"
     else:
         pass
-    return redirect(url_for('start'))
+    return render_template('event_admin.html', message=msg)
 
 
 if __name__ == '__main__':
