@@ -9,11 +9,11 @@ def start():
 
 @app.route('/event', methods=['POST', 'GET'])
 def event():
-	print 'test'
-	if request.method == 'POST':
-		return 'Hello world'
-	else:
-		pass
+    if request.method == 'POST':
+        pass
+    else:
+        pass
+    return "Hello world"
 
 
 if __name__ == '__main__':
