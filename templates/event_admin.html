@@ -3,22 +3,20 @@
 </HEAD>
 {{ message }}
 <H1>
-Event Admin Page
-</H1>
-<H1>
 Current Events
 </H1>
 {% for event in events %}
-  <div style="width: 400px">
-  <div style="float:left; width: 200px">
+  <div style="width: 600px">
+  <div style="float:left; width: 300px">
   <a href="{{ url_for('show_event') }}?event={{event._id}}">Register to {{ event.event_name }}</a> , date: {{ event.event_date }}
   </div>
-  <div style="float:right; width: 200px">
+  <div style="float:right; width: 300px">
   <a href="{{ url_for('show_participants') }}?event={{event._id}}">Show participants for {{ event.event_name }}</a>
   <P>
   </div>
   </div>
 {% endfor %} 
+<br>
 <br>
 
 <H1>

@@ -65,7 +65,7 @@ def event():
             msg = "Something went wrong"
     else:
         pass
-    return redirect(url_for(start))
+    return redirect(url_for('start'))
 
 
 if __name__ == '__main__':
