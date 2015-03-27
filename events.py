@@ -31,8 +31,8 @@ def register():
         flash('New entry was successfully posted')
         
         data = {
-            'event_name': request.form['event_name'],
-            'event_date': request.form['event_date_text'],
+            'family_name': request.form['family_name'],
+            'first_name': request.form['first_name'],
         }
         requests.post(db_url, data=data, headers={'content-type': 'application/json'})
     else:
