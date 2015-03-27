@@ -2,10 +2,9 @@
 <HEAD>
 </HEAD>
 <H1>
-Register for attending event
 </H1>
 <H1>
-Event x
+Event {{ event.event_name }} with start date: {{ event.event_date }}
 </H1>
 <H1>
 Event Managent
@@ -13,7 +12,7 @@ Event Managent
 <FORM action="{{ url_for('register') }}" method="post"> 
 Family Name: <INPUT type="text" name="family_name"><P>
 First Name: <INPUT type="text" name="first_name"><P>
-
+<input value="{{ event._id }}" name="event_id" type="hidden">
 <INPUT type="submit" value="Register">
 </FORM>
 </HTML>

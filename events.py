@@ -23,21 +23,21 @@ def start():
     events = requests.get(db_url)
     return render_template('event_admin.html', events=events.json())
 
-@app.route('/show_event')
+@app.route('/show_event ')
 def show_event():
-    events = requests.get(db_url)
-    return render_template('event_register.html')
+    event_name = request.args.get('event')
+    event = requests.get(db_url + '/' + event_name)
+    return render_template('event_register.html', event=event.json())
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
-        flash('New entry was successfully posted')
-        
         data = {
             'family_name': request.form['family_name'],
             'first_name': request.form['first_name'],
+            'event_id': request.form['event_id']
         }
-        requests.post(db_url, data=data, headers={'content-type': 'application/json'})
+        requests.post(db_url, data=json.dumps(data), headers={'content-type': 'application/json'})
     else:
 	   get_resp = requests.get(db_url)
 	   return json.dumps(get_resp.json())
@@ -46,8 +46,6 @@ def register():
 @app.route('/event', methods=['POST', 'GET'])
 def event():
     if request.method == 'POST':
-        flash('New entry was successfully posted')
-        
         data = {
             'event_name': request.form['event_name'],
             'event_date': request.form['event_date_text'],
