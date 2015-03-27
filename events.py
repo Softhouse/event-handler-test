@@ -16,10 +16,27 @@ app.config.update(dict(
     PASSWORD='default'
 ))
 
-
 @app.route('/')
 def start():
     return render_template('event_admin.html')
+
+@app.route('/show_event')
+def show_event():
+    return render_template('event_register.html')
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        flash('New entry was successfully posted')
+        
+        data = {
+            'event_name': request.form['event_name'],
+            'event_date': request.form['event_date_text'],
+        }
+        requests.post(db_url, data=data, headers={'content-type': 'application/json'})
+    else:
+        pass
+    return redirect(url_for('start'))
 
 @app.route('/event', methods=['POST', 'GET'])
 def event():
