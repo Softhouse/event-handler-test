@@ -2,8 +2,10 @@ import os
 from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
+import requests, json
 
 app = Flask(__name__)
+db_url = 'http://localhost:3232/event/'
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
@@ -23,8 +25,12 @@ def start():
 def event():
     if request.method == 'POST':
         flash('New entry was successfully posted')
-        flash(request.form['event_name'])
-        flash(request.form['event_date_text'])
+        
+        data = {
+            'event_name': request.form['event_name'],
+            'event_date': request.form['event_date_text'],
+        }
+        requests.post(db_url, data=data, headers={'content-type': 'application/json'})
     else:
         pass
     return redirect(url_for('start'))
